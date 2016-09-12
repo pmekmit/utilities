@@ -1,1 +1,30 @@
-
+#! /bin/bash
+# Stop LEMP Services #
+clear
+echo "---------------------------------------------------------"
+echo "Stop LEMP Services. Press [Enter] key to Continue...  "
+echo "---------------------------------------------------------"
+sudo systemctl stop nginx.service
+sudo systemctl stop php7.0-fpm.service
+sudo systemctl stop mysql.service
+echo "---------------------------------------------------------"
+#	if false; then "ENDPGM"
+echo "---------------------------------------------------------"
+read -p "LEMP Services Status. Press [Enter] key to Continue..."
+clear
+echo "---------------------------------------------------------"
+date;
+echo "uptime:"
+sudo systemctl status nginx.service
+echo "---------------------------------------------------------"
+read -p "LEMP Services Status. Press [Enter] key to Continue..."
+clear
+echo "---------------------------------------------------------"
+sudo systemctl status php7.0-fpm.service
+echo "---------------------------------------------------------"
+read -p "LEMP Services Status. Press [Enter] key to Continue..."
+clear
+echo "---------------------------------------------------------"
+sudo systemctl status mysql.service
+#	fi
+#echo "ENDPGM"
