@@ -1,0 +1,16 @@
+#!/bin/bash
+#----------------------------------------------------------------------#
+# File: tlkclearup                                                    
+# Desc: Run bleachbit utility from the command lime. This uses the
+#       Bleachbit settings                                    
+# Date: Sept 2014                                                  
+#----------------------------------------------------------------------#
+clear
+clear
+echo "Cleanup User Data"
+bleachbit -c --preset
+echo "Cleanup System Data"
+sudo logrotate -f /etc/logrotate.conf
+sudo bleachbit -c --preset
+read -p "Press [Enter] key to Finish..."
+

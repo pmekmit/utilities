@@ -1,0 +1,69 @@
+#!/bin/bash
+#----------------------------------------------------------------------#
+# File: tlkmusicmove                                                    
+# Desc: Manipulate Music Files and Create Directory/Music File
+#       for each artist. Assumes music files are:-
+#       BANDNAME - MUSICFILE.mp3                                    
+# Date: 4th Sept 2016                                                  
+#----------------------------------------------------------------------#
+clear
+#----------------------------------------------------------------------#
+# Save Internal Field Seperator, reset at end of script                
+#----------------------------------------------------------------------#
+# 
+wSAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+#
+wCurrentDir=$PWD
+echo "Current Directory = $wCurrentDir"
+# 
+# Append "/"
+#
+wCurrentDirAppend=$wCurrentDir"/"
+echo "Current Directory with Append = $wCurrentDirAppend"
+echo " "
+echo "-----------"
+echo " "
+#
+# List all files in current directory
+#
+for dirfile in $(find -maxdepth 1 $sCurrentDir -type f);
+do
+	# extract extension right of "."
+	# note: format "./file-name.exten"
+	exten=${dirfile#*.}	#remove "./" 
+	exten=${exten#*.}	#remoev ".", left with file extension
+	#           
+	if [ $exten = "mp3" ]; then
+		# extract right of "-"
+		musicfile=${dirfile#*-}
+		# remove leading space
+		musicfile="$(echo -e "${musicfile}" | sed -e 's/^[[:space:]]*//')"
+		# extract left of "-" - directory name
+		musicdir=${dirfile%-*}
+		# remove trailing white space
+		musicdir="$(echo -e "${musicdir}" | sed -e 's/[[:space:]]*$//')"
+		# remove "./"
+		# note: format "./name"
+		musicdir=${musicdir#*.}	#remove "."
+		musicdir=${musicdir#*/}	#remove "/" 
+		# create directory if it does not exist
+		wNewDir=$wCurrentDir"/"$musicdir
+		if [ ! -d "$wNewDir" ]; then
+			echo $wNewDir
+			mkdir $wNewDir
+		fi
+		wFromFile=$wCurrentDir"/"$dirfile
+		wToFile=$wNewDir"/"$dirfile
+		if [ ! -f "$wToFile" ]; then
+			echo "mv $wFromFile" "$wToFile"
+			mv "$wFromFile" "$wToFile"
+			#echo " "
+			echo "-----------"
+		fi
+	fi
+done
+#----------------------------------------------------------------------#
+# Reset Internal Field Seperator     
+#----------------------------------------------------------------------#
+IFS=$wSAVEIFS

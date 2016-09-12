@@ -1,0 +1,26 @@
+#! /bin/bash
+# Start LEMP Services #
+clear
+echo "---------------------------------------------------------------------------------------------"
+read -p "Start LEMP Services. Press [Enter] key to Continue..."
+echo "---------------------------------------------------------------------------------------------"
+sudo systemctl start nginx.service
+sudo systemctl start php7.0-fpm.service
+sudo systemctl start mysql.service
+echo "---------------------------------------------------------------------------------------------"
+read -p "LEMP Services Status. Press [Enter] key to Continue..."
+clear
+echo "---------------------------------------------------------------------------------------------"
+date;
+echo "uptime:"
+sudo systemctl status nginx.service
+echo "---------------------------------------------------------------------------------------------"
+read -p "LEMP Services Status. Press [Enter] key to Continue..."
+clear
+echo "---------------------------------------------------------------------------------------------"
+sudo systemctl status php7.0-fpm.service
+echo "---------------------------------------------------------------------------------------------"
+read -p "LEMP Services Status. Press [Enter] key to Continue..."
+clear
+echo "---------------------------------------------------------------------------------------------"
+sudo systemctl status mysql.service

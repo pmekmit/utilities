@@ -1,0 +1,31 @@
+#!/bin/bash
+clear
+##----------------------------------------------------------------------#
+# File: tlkmusiccon                                                    
+# Desc: In Music Directory root, parse all sub-directories and
+#       run soundconverter to convert all *.ogg music files to *.mp3
+#       BANDNAME - MUSICFILE.mp3 
+#       Uses "nice" to try and downgrade the job priority                                   
+# Date: 4th Sept 2016                                                  
+#----------------------------------------------------------------------#
+SAVEIFS=$IFS
+IFS=$(echo -en "\n\b")
+#
+echo "Directories"
+for i in $(tree -dfi $(pwd));
+do
+	MyCON="$i""/*.ogg"
+	echo $MyCON
+	echo "---------------------------------"
+	echo "Convert to MP3"
+	echo "---------------------------------"
+	nice -n 10 soundconverter -b -m mp3 -q -s .mp3 $MyCON
+	#read -p "Press [Enter] key to remove OGG"
+	echo "#################################"
+	echo "Remove OGG"
+	echo "#################################"
+	rm $MyCON
+	#read -p "Press [Enter] key to Continue..."
+done 
+#
+IFS=$SAVEIFS
