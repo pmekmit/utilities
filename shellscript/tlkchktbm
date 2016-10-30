@@ -7,5 +7,5 @@ echo "---------------------------------------------------------"
 clamscan -r --remove /home/timkemp/.cache/thunderbird > /home/timkemp/tlkchkcache.log
 echo "---------------------------------------------------------"
 echo "Check (.thunderbird)... 3 min approx."
-clamscan -r --remove /home/timkemp/.thunderbird > /home/timkemp/tlkchktmb.log
+clamscan -r --remove /home/timkemp/.thunderbird > /home/timkemp/tlkchktbm.log
 # End
