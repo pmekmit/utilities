@@ -4,8 +4,11 @@ clear
 echo "---------------------------------------------------------"
 echo "Check (.cache/thunderbird)... 1 min approx."
 echo "---------------------------------------------------------"
-clamscan -r --remove /home/timkemp/.cache/thunderbird > /home/timkemp/tlkchkcache.log
+# clamscan -r --remove /home/timkemp/.cache/thunderbird > /home/timkemp/tlkchkcache.log #
+clamscan -r -i /home/timkemp/.cache/thunderbird > /home/timkemp/tlkchkcache.log
 echo "---------------------------------------------------------"
 echo "Check (.thunderbird)... 3 min approx."
-clamscan -r --remove /home/timkemp/.thunderbird > /home/timkemp/tlkchktbm.log
+echo "---------------------------------------------------------"
+# clamscan -r --remove /home/timkemp/.thunderbird > /home/timkemp/tlkchktbm.log #
+clamscan -r -i /home/timkemp/.thunderbird > /home/timkemp/tlkchktbm.log
 # End
