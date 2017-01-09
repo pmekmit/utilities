@@ -1,0 +1,14 @@
+#! /bin/bash
+# Run Virus Check on Mozilla #
+clear
+echo "---------------------------------------------------------"
+echo "Check (.cache/mozilla)... 1 min approx."
+echo "---------------------------------------------------------"
+# clamscan -r --remove /home/timkemp/.cache/mozilla > /home/timkemp/tlkchkmozcache.log #
+clamscan -r -i /home/timkemp/.cache/mozilla > /home/timkemp/tlkchkmozcache.log
+echo "---------------------------------------------------------"
+echo "Check (.mozilla)... 3 min approx."
+echo "---------------------------------------------------------"
+# clamscan -r --remove /home/timkemp/.mozilla > /home/timkemp/tlkchktbm.log #
+clamscan -r -i /home/timkemp/.mozilla > /home/timkemp/tlkchkmoz.log
+# End
